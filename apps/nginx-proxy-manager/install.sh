@@ -6,7 +6,6 @@ EPS_UTILS_DISTRO=${EPS_UTILS_DISTRO:-}
 EPS_APP_CONFIG=${EPS_APP_CONFIG:-}
 EPS_CLEANUP=${EPS_CLEANUP:-false}
 EPS_CT_INSTALL=${EPS_CT_INSTALL:-false}
-PIP_BREAK_SYSTEM_PACKAGES=1
 
 if [ -z "$EPS_BASE_URL" -o -z "$EPS_OS_DISTRO" -o -z "$EPS_UTILS_COMMON" -o -z "$EPS_UTILS_DISTRO" -o -z "$EPS_APP_CONFIG" ]; then
   printf "Script looded incorrectly!\n\n";
@@ -93,7 +92,7 @@ step_start "Python"
   # Remove old venv and global pip packages
   rm -rf /opt/certbot/ /usr/bin/certbot
   if [ "$(command -v pip)" ]; then
-    pip uninstall -q -y cryptography cffi certbot tldextract --break-system-packages &>$__OUTPUT
+    # pip uninstall -q -y cryptography cffi certbot tldextract --break-system-packages &>$__OUTPUT
   fi
 
   # Remove potential conflicting depenedencies
